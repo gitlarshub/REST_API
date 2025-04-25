@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using EFCoreApplication;
 using Microsoft.EntityFrameworkCore;
 
 class Program
 {
-    static void Main()
+    public static void Main(string[] args)
     {
         using (var context = new DBContext())
         {
-            context.Database.EnsureDeleted();
-            context.Database.EnsureCreated();
+            context.Database.Migrate();
 
             var city = new City { Name = "Mäder" };
             var city2 = new City { Name = "Vienna" };
